@@ -1,0 +1,154 @@
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+thead {
+  position: sticky;
+  top: 55px;
+  background-color: #f6f6f6;
+}
+
+tr {
+  border-bottom: 1px solid #777;
+}
+
+th[scope=col]:nth-child(n+2) {
+  text-align: center;
+}
+
+th[scope=col] {
+  font-size: 0.8rem;
+}
+
+th[scope=row] {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+th, td {
+  text-align: left;
+  padding: 5px 8px;
+  font-weight: 200;
+}
+
+tbody td {
+  text-align: center;
+}
+
+.conference {
+  padding: 5px 8px;
+}
+
+.team-logo-table {
+  width: 20px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  list-style: none;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f6f6f6;
+}
+
+main {
+  padding: 10px;
+  height: 100%;
+  position: relative;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  height: 55px;
+  z-index: 999;
+}
+
+header[id=main-header] {
+  border-bottom: 1px solid;
+  position: sticky;
+  top: 0;
+  background-color: #f6f6f6;
+}
+
+header h1 {
+  font-size: 1rem;
+}
+
+#app {
+  height: 100vh;
+}
+
+main {
+  overflow: scroll;
+  padding-top: 0;
+}
+
+#panel {
+  background-color: white;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+}
+
+#app {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+
+#standings-ui {
+  height: 100%;
+}
+
+#panel {
+  padding: 0 26px;
+  border-right: 2px solid #313131;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  gap: 11px;
+}
+
+nav a {
+  font-size: 0.9rem;
+  border-radius: 5px;
+  padding: 5px 20px;
+  background-color: #313131;
+}
+
+#standings-ui {
+  position: relative;
+}
+
+.games-logo {
+  width: 70px;
+}
+
+.game-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}/*# sourceMappingURL=styles.css.map */

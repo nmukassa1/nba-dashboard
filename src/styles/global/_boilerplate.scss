@@ -1,0 +1,61 @@
+@use '../util//variables' as v;
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    list-style: none;
+    // color: #FAFAFA;
+}
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+body{ 
+    // background-color: #242424;
+    background-color: #f6f6f6;
+}
+main{
+    padding: 10px;
+    height: 100%;
+    position: relative;
+}
+header{
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    height: v.$headerHeight;
+    z-index: 999;
+}
+header[id='main-header']{
+    border-bottom: 1px solid;
+    position: sticky;
+    top: 0;
+    background-color: #f6f6f6;
+}
+header h1{
+    font-size: 1rem;
+}
+
+#app{
+    height: 100vh;
+}
+main{
+    overflow: scroll;
+    padding-top: 0;
+}
+#panel{
+    // background-color: #212121;
+    background-color: white;
+}
+
+button{
+    cursor: pointer;
+    border: none;
+}
+
+a{
+    text-decoration: none;
+}
+img{
+    width: 100%;
+}
