@@ -1,4 +1,6 @@
 @use '../util//variables' as v;
+@use '../util//breakpoints' as b;
+
 table{
   border-collapse: collapse;
   // color: #FAFAFA;
@@ -6,7 +8,7 @@ table{
 }
 thead{
   position: sticky;
-  top: v.$headerHeight;
+  top: 0;
   // background-color: #242424;
   background-color: #f6f6f6;
 }
@@ -42,4 +44,15 @@ tbody td{
 
 .team-logo-table{
   width: 20px;
+}
+.team-name{
+  display: none;
+  @include b.up(md){
+    display: block;
+  }
+}
+.team-code{
+  @include b.up(md){
+    display: none;
+  }
 }

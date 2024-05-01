@@ -1,3 +1,25 @@
+nav[id=mobile-navbar] {
+  background: black;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+@media (width > 768px) {
+  nav[id=mobile-navbar] {
+    display: none;
+  }
+}
+nav[id=mobile-navbar] a {
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+  color: white;
+}
+
 table {
   border-collapse: collapse;
   width: 100%;
@@ -5,7 +27,7 @@ table {
 
 thead {
   position: sticky;
-  top: 55px;
+  top: 0;
   background-color: #f6f6f6;
 }
 
@@ -45,11 +67,28 @@ tbody td {
   width: 20px;
 }
 
+.team-name {
+  display: none;
+}
+@media (width > 768px) {
+  .team-name {
+    display: block;
+  }
+}
+
+@media (width > 768px) {
+  .team-code {
+    display: none;
+  }
+}
+
+/* Use: Handles global style */
 * {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
   list-style: none;
+  text-wrap: nowrap;
 }
 
 *, *::before, *::after {
@@ -61,15 +100,22 @@ body {
 }
 
 main {
-  padding: 10px;
-  height: 100%;
-  position: relative;
+  height: calc(100% - 55px * 2);
+  overflow: scroll;
+}
+@media (width > 768px) {
+  main {
+    height: 100%;
+  }
+}
+
+#app {
+  height: 100vh;
 }
 
 header {
   display: flex;
   align-items: center;
-  padding-left: 10px;
   height: 55px;
   z-index: 999;
 }
@@ -85,19 +131,11 @@ header h1 {
   font-size: 1rem;
 }
 
-#app {
-  height: 100vh;
-}
-
-main {
-  overflow: scroll;
-  padding-top: 0;
-}
-
 #panel {
   background-color: white;
 }
 
+/* Use: To reset html elements default styles to the way I like and create predefined classes */
 button {
   cursor: pointer;
   border: none;
@@ -111,36 +149,20 @@ img {
   width: 100%;
 }
 
-#app {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
+.container {
+  padding: 0 15px;
 }
 
-#standings-ui {
-  height: 100%;
-}
-
-#panel {
-  padding: 0 26px;
-  border-right: 2px solid #313131;
-}
-
-nav {
-  display: flex;
-  flex-direction: column;
-  margin-top: 10px;
-  gap: 11px;
-}
-
-nav a {
-  font-size: 0.9rem;
-  border-radius: 5px;
-  padding: 5px 20px;
-  background-color: #313131;
+@media (width > 992px) {
+  #app {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+  }
 }
 
 #standings-ui {
   position: relative;
+  height: 100%;
 }
 
 .games-logo {

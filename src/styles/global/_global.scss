@@ -1,9 +1,12 @@
-@use '../util//variables' as v;
+/* Use: Handles global style */
+@use '../util/variables' as v;
+@use '../util/breakpoints' as b;
 *{
     margin: 0;
     padding: 0;
     font-family: sans-serif;
     list-style: none;
+    text-wrap: nowrap;
     // color: #FAFAFA;
 }
 *, *::before, *::after{
@@ -15,14 +18,18 @@ body{
     background-color: #f6f6f6;
 }
 main{
-    padding: 10px;
-    height: 100%;
-    position: relative;
+    height: calc(100% - (#{v.$headerHeight} * 2)); //Times 2 due to both navbar top * bottom
+    @include b.up(md){
+        height: 100%;
+    }
+    overflow: scroll;
+}
+#app{
+    height: 100vh;
 }
 header{
     display: flex;
     align-items: center;
-    padding-left: 10px;
     height: v.$headerHeight;
     z-index: 999;
 }
@@ -36,26 +43,8 @@ header h1{
     font-size: 1rem;
 }
 
-#app{
-    height: 100vh;
-}
-main{
-    overflow: scroll;
-    padding-top: 0;
-}
 #panel{
     // background-color: #212121;
     background-color: white;
 }
 
-button{
-    cursor: pointer;
-    border: none;
-}
-
-a{
-    text-decoration: none;
-}
-img{
-    width: 100%;
-}

@@ -27,11 +27,6 @@ function Panel() {
             <header>
                 <h1>NBA</h1>
             </header>
-            <nav>
-                <Link to="/">Home</Link>
-                <Link to="/standings">Standings</Link>
-                <Link to="/games">Games</Link>
-            </nav>
         </div>
      );
 }

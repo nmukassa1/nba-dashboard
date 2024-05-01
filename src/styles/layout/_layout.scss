@@ -1,23 +1,10 @@
+@use '../util/breakpoints' as b;
+
 #app{
-    display: grid;
-    grid-template-columns: 1fr 4fr;
+    @include b.up(lg){
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+    }
 }
-#standings-ui{
-    height: 100%;
-}
-#panel{
-    padding: 0 26px;
-    border-right: 2px solid #313131;
-}
-nav{
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
-    gap: 11px;
-}
-nav a{
-    font-size: .9rem;
-    border-radius: 5px;
-    padding: 5px 20px;
-    background-color: #313131;
-}
+
+ 

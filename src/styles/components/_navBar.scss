@@ -1,0 +1,23 @@
+@use '../util/variables' as v;
+@use '../util/breakpoints' as b;
+
+nav[id='mobile-navbar']{
+    background: black;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    height: v.$headerHeight;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    @include b.up(md){
+        display: none;
+    }
+
+    a{
+        display: flex;
+        flex-direction: column;
+        place-content: center;
+        color: white;
+    }
+}
