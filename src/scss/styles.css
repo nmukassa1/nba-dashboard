@@ -82,6 +82,25 @@ tbody td {
   }
 }
 
+#season-selection {
+  z-index: 9999;
+  position: fixed;
+  top: 18px;
+  right: 15px;
+  outline: none;
+  border: none;
+  background: black;
+  color: white;
+  padding: 1px;
+  font-size: 0.9rem;
+  border-radius: 3px;
+}
+@media (width > 768px) {
+  #season-selection {
+    display: none;
+  }
+}
+
 /* Use: Handles global style */
 * {
   margin: 0;

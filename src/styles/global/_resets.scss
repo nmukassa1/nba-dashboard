@@ -1,5 +1,5 @@
 /* Use: To reset html elements default styles to the way I like and create predefined classes */
-
+@use '../util//variables' as v;
 button{
     cursor: pointer;
     border: none;
@@ -12,5 +12,5 @@ img{
 }
 
 .container{
-    padding: 0 15px;
+    padding: 0 v.$containerPadding-X;
 }

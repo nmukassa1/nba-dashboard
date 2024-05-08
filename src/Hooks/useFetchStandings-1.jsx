@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
-import useFetch from "./useFetch";
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import useFetch from './useFetch-1';
 
 function useFetchStandings() {
-    const {data, fetchData} = useFetch()
-
     // State to hold the fetched data
     const [table, setTable] = useState([]);
 
@@ -19,22 +17,11 @@ function useFetchStandings() {
         `https://api-nba-v1.p.rapidapi.com/standings?league=standard&season=${query}`
     );
 
+    // Custom hook to fetch data
+    const { data, loading, error } = useFetch(url);
+
     // Effect to update the query state based on search parameters
     useEffect(() => {
-        updateQueryState()
-    }, [searchParams]);
-    useEffect(() => {
-        setUrl(`https://api-nba-v1.p.rapidapi.com/standings?league=standard&season=${query}`)
-    }, [query])
-    useEffect(() => {
-        fetchData(url)
-    }, [url])
-    useEffect(() => {
-        createTable()
-    }, [data])
-
-
-    function updateQueryState(){
         const currentDate = new Date();
         let currentSeason = currentDate.getFullYear() - 1;
         if (
@@ -43,11 +30,24 @@ function useFetchStandings() {
         ) {
             setQuery(currentSeason);
         } else {
-            setQuery(parseInt(searchParams.get('season')));
+            setQuery(
+                searchParams.get('season') === null
+                    ? currentSeason
+                    : parseInt(searchParams.get('season'))
+            );
         }
-    }
+        console.log(searchParams.get('season'));
+    }, [searchParams]);
 
-    function createTable(){
+    // Effect to update the URL whenever the query changes
+    useEffect(() => {
+        setUrl(
+            `https://api-nba-v1.p.rapidapi.com/standings?league=standard&season=${query}`
+        );
+    }, [query]);
+
+    // Effect to create and sort the table array when data is fetched
+    useEffect(() => {
         if (data && data.response && data.response.length > 0) {
             let table = [...data.response];
             // Sort the table in order by where they sit on the table
@@ -57,10 +57,13 @@ function useFetchStandings() {
             const western = table.filter((item) => item.conference.name === 'west');
             table = [...eastern, ...western];
             setTable(table);
-            // console.log(table);
+            // console.log(data);
         }
-    }
-    return {table, setSearchParams, setQuery};
+        // console.log(data);
+    }, [data]);
+
+    // Return the fetched data and query setter function
+    return { table, setSearchParams, setQuery };
 }
 
 export default useFetchStandings;

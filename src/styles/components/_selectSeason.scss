@@ -1,0 +1,21 @@
+@use '../util/breakpoints';
+@use '../util/variables' as v;
+
+#season-selection{
+    z-index: 9999;
+    position: fixed;
+    top: 18px;
+    right: v.$containerPadding-X;
+    outline: none;
+    border: none;
+    background: black;
+    color: white;
+    padding: 1px;
+    font-size: .9rem;
+    border-radius: 3px;
+
+
+    @include breakpoints.up(md){
+        display: none;
+    }
+}
