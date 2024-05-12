@@ -24,6 +24,7 @@ function useFetchStandings() {
         updateQueryState()
     }, [searchParams]);
     useEffect(() => {
+        console.log(query);
         setUrl(`https://api-nba-v1.p.rapidapi.com/standings?league=standard&season=${query}`)
     }, [query])
     useEffect(() => {
@@ -35,15 +36,21 @@ function useFetchStandings() {
 
 
     function updateQueryState(){
+        const searchQuery = parseInt(searchParams.get('season'));
         const currentDate = new Date();
         let currentSeason = currentDate.getFullYear() - 1;
+        const lastSeasonFetchable = currentSeason - 5; // Api will only request seasons from up to 6 years
         if (
-            parseInt(searchParams.get('season')) > currentSeason ||
+            searchQuery > currentSeason ||
             searchParams.get('season') === null
         ) {
             setQuery(currentSeason);
-        } else {
-            setQuery(parseInt(searchParams.get('season')));
+        } else if(searchQuery < lastSeasonFetchable){
+            setQuery(lastSeasonFetchable);
+            // setSearchParams(lastSeasonFetchable)
+        }
+         else {
+            setQuery(searchQuery);
         }
     }
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import useFetchStandings from "../Hooks/useFetchStandings-1";
+import useFetchStandings from "../Hooks/useFetchStandings";
 import useScrollToTop from "../Hooks/useScrollTopTop";
 
 function SelectSeason() {

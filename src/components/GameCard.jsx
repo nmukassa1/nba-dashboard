@@ -1,33 +1,17 @@
-function GameCard({game, standings}) {
-     function getRecord(teamId, isHome) {
-        const side = isHome ? 'home' : 'visitors';
-        //Map thru standings array and find matching team
-        const team = standings.response.filter((item) => {return item.team.id === teamId.teams[side].id});
-        const win = team[0].win.total;
-        const loss = team[0].loss.total;
-        const output = win + '-' + loss;
-        return output
-    }
+function GameCard({game}) {
 
     function getTime(item){
         const timestamp = item.date.start;
         const dateObj = new Date(timestamp);
-        let hours = dateObj.getHours();
-        let minutes = dateObj.getMinutes();
-        let timeOfDay = 'PM';
-        if(hours < 10) {
-            hours = `0${hours}`;
-            timeOfDay = 'AM'
-        }
-        if(minutes < 10) minutes = `0${minutes}`;
+        let hours = dateObj.getHours() <  11 ? `0${dateObj.getHours()}` : dateObj.getHours();
+        let minutes = dateObj.getMinutes() < 10 ? `0${dateObj.getMinutes()}` : dateObj.getMinutes();
+        let timeOfDay = dateObj.getHours() < 11 ? 'AM' : 'PM';
         let output = null
         if(dateObj.getTime() > new Date().getTime()){
             output = `${hours}:${minutes} ${timeOfDay}`
-        } else{
-            output = 'Finished'
-        }
-        // const output = `${hours}:${minutes} ${timeOfDay}`;
+        } 
         return output
+        // console.log(output);
     }
 
     function getDate(item){
@@ -39,21 +23,41 @@ function GameCard({game, standings}) {
         const output = `${day}, ${dateObj.getDate()}/${month}`
         return output
     }
+
+    function homeTeamWon(){
+        const output = game.teams.home.points > game.teams.visitors.points ? 'game-won' : '';
+        return output
+    }
+    function awayTeamWon(){
+        const output = game.teams.visitors.points > game.teams.home.points ? 'game-won' : '';
+        return output
+    }
+
+
     return ( 
         <div className="game-card">
-            <div className="home-team">
-                <img className="games-logo" src={game.teams.home.logo} alt="" />
-                <p>{game.teams.home.nickname}</p>
-                <p>{getRecord(game, true)}</p>
+            <div className="game-card__status">
+                {game.status.long !== 'Scheduled' ? game.status.long : getDate(game) + ' - ' + getTime(game) }
             </div>
-            <div className="timestamp">
-                <div className="time">{getTime(game)}</div>
-                <div className="date">{getDate(game)}</div>
+
+            <div className={`game-card__team ${homeTeamWon()}`}>
+                <div>
+                    <img src={game.teams.home.logo} alt="" />
+                    <span>{game.teams.home.code}</span>
+                </div>
+                <span>
+                    {game.scores.home.points === null ? '0' : game.scores.home.points}
+                </span>
             </div>
-            <div className="away-team">
-                <img className="games-logo" src={game.teams.visitors.logo} alt="" />
-                <p>{game.teams.visitors.nickname}</p>
-                <p>{getRecord(game, false)}</p>
+
+            <div className={`game-card__team ${awayTeamWon()}`}>
+                <div>
+                    <img src={game.teams.visitors.logo} alt="" />
+                    <span>{game.teams.visitors.code}</span>
+                </div>
+                <span>
+                    {game.scores.visitors.points === null ? '0' : game.scores.visitors.points}
+                </span>
             </div>
         </div>
     );

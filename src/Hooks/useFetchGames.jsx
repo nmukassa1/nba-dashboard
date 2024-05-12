@@ -2,10 +2,9 @@ import {useState, useEffect} from 'react';
 import useFetch from "./useFetch";
 
 function useFetchGames() {
-    const [games, setGames] = useState(null)
+    const [games, setGames] = useState([])
     const [query, setQuery] = useState();
     const [dates, setDates] = useState();
-    const [res, setRes] = useState([]);
     const [dateTracker, setDateTracker] = useState(0)
     const [url, setUrl] = useState(`https://api-nba-v1.p.rapidapi.com/games?date=${query}`);
 
@@ -33,7 +32,7 @@ function useFetchGames() {
 
     useEffect(() => {
         if (data && data.results > 0) {
-            setRes(prevRes => [...prevRes, data]);
+            setGames(prevGames => [...prevGames, data.response]);
             setDateTracker(a => a + 1);
         }
         // console.log(data.results);
@@ -68,12 +67,12 @@ function useFetchGames() {
         return {
             yesterday: formatDate(yesterday),
             today: formatDate(currentDate),
-            tomorrow: formatDate(tomorrow)
+            tomorrow: formatDate(tomorrow),
         };
     }
 
 
-    return {games, res};
+    return {games, games};
 }
 
 export default useFetchGames;

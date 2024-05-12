@@ -101,6 +101,45 @@ tbody td {
   }
 }
 
+#games-container {
+  display: flex;
+  gap: 30px;
+  overflow: scroll;
+  padding-bottom: 5px;
+}
+
+.game-card {
+  width: 200px;
+  flex-shrink: 0;
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0 3px 0px 2px hsl(0, 0%, 0%);
+}
+.game-card__status {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-left: auto;
+}
+.game-card__team {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.game-card__team div:nth-child(1) {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.game-card__team div:nth-child(1) img {
+  width: 40px;
+  aspect-ratio: 1/1;
+}
+
+.game-won {
+  font-weight: bold;
+}
+
 /* Use: Handles global style */
 * {
   margin: 0;
@@ -182,14 +221,4 @@ img {
 #standings-ui {
   position: relative;
   height: 100%;
-}
-
-.games-logo {
-  width: 70px;
-}
-
-.game-card {
-  display: flex;
-  align-items: center;
-  gap: 20px;
 }/*# sourceMappingURL=styles.css.map */

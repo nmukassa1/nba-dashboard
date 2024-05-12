@@ -9,25 +9,23 @@ function Games() {
 
     useEffect(() => {
         if(games.length > 0){
-            // console.log(Object.values(games))
             games.forEach((game) => {
                 game.forEach((item) => {
                     arr.push(item)
                 })
             })
-            setGameScheduel(arr)
+            const sortGames = arr.sort((a,b) => new Date(a.date.start).getTime() - new Date(b.date.start).getTime())
+            // console.log(sortGames);
+            setGameScheduel(sortGames)
         }
     }, [games])
 
-    useEffect(() => {
-        console.log(gameScheduel);
-    }, [gameScheduel])
 
     return ( 
-        <div id="games-ui" className="container">
+        <div id="games-container" className="container">
             {gameScheduel && (
                 gameScheduel.map((game) => (
-                    <GameCard game={game} />
+                    <GameCard game={game} key={game.id} />
                 ))
             )}
         </div>    
