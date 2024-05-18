@@ -29,6 +29,7 @@ thead {
   position: sticky;
   top: 0;
   background-color: #f6f6f6;
+  z-index: 9999;
 }
 
 tr {
