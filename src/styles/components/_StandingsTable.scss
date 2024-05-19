@@ -20,9 +20,7 @@ thead{
 tr{
   border-bottom: 1px solid #777;
 }
-tbody tr:nth-child(even){
-  // background: #202737;
-}
+
 th[scope="col"]:nth-child(n+2){
   text-align: center;
 }
