@@ -107,6 +107,7 @@ tbody td {
   gap: 30px;
   overflow: scroll;
   padding-bottom: 5px;
+  margin: 10px 0;
 }
 
 .game-card {
