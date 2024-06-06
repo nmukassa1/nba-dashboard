@@ -5,7 +5,7 @@ function GameCard({game}) {
         const dateObj = new Date(timestamp);
         let hours = dateObj.getHours() <  11 ? `0${dateObj.getHours()}` : dateObj.getHours();
         let minutes = dateObj.getMinutes() < 10 ? `0${dateObj.getMinutes()}` : dateObj.getMinutes();
-        let timeOfDay = dateObj.getHours() < 11 ? 'AM' : 'PM';
+        let timeOfDay = dateObj.getHours() <= 11 ? 'AM' : 'PM';
         let output = null
         if(dateObj.getTime() > new Date().getTime()){
             output = `${hours}:${minutes} ${timeOfDay}`

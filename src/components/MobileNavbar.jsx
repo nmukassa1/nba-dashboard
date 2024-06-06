@@ -6,16 +6,16 @@ function MobileNavbar() {
     return ( 
         <nav id="mobile-navbar">
             <Link to="/">
-            <FontAwesomeIcon icon={faHouse} style={{color: "#ffffff",}} />
+                <FontAwesomeIcon icon={faHouse} style={{color: "#ffffff",}} />
                 Home
             </Link>
             <Link to="/standings">
                 <FontAwesomeIcon icon={faTable} style={{color: "#ffffff",}} />
                 Standings
             </Link>
-            <Link to="/games">
+            <Link to="/teams">
                 <FontAwesomeIcon icon={faBasketball} style={{color: "#ffffff",}} />
-                Games
+                Teams
             </Link>
         </nav> 
     );

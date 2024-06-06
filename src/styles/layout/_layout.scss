@@ -1,7 +1,7 @@
 @use '../util/breakpoints' as b;
 
 #app{
-    @include b.up(lg){
+    @include b.up(md){
         display: grid;
         grid-template-columns: 1fr 4fr;
     }

@@ -20,6 +20,26 @@ nav[id=mobile-navbar] a {
   color: white;
 }
 
+nav[id=desktop-navbar] {
+  display: none;
+}
+@media (width > 768px) {
+  nav[id=desktop-navbar] {
+    display: grid;
+    gap: 20px;
+    padding: 10px 16px 0;
+  }
+}
+nav[id=desktop-navbar] a {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: black;
+  padding: 10px 14px;
+  border-radius: 5px;
+}
+
 table {
   border-collapse: collapse;
   width: 100%;
@@ -142,6 +162,26 @@ tbody td {
   font-weight: bold;
 }
 
+#teams-logo-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+#teams-logo-container .team-logo {
+  width: 90px;
+}
+
+#team-stats-banner {
+  height: 200px;
+  overflow: hidden;
+  border-bottom: 1px solid;
+}
+
+#team-stats-logo {
+  width: 100px;
+}
+
 /* Use: Handles global style */
 * {
   margin: 0;
@@ -213,7 +253,7 @@ img {
   padding: 0 15px;
 }
 
-@media (width > 992px) {
+@media (width > 768px) {
   #app {
     display: grid;
     grid-template-columns: 1fr 4fr;

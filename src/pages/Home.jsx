@@ -1,4 +1,4 @@
-import Games from '../components/Games'
+import UpcomingGames from '../components/UpcomingGames'
 import StandingsTable from '../components/StandingsTable'
 import useFetchStandings from "../Hooks/useFetchStandings";
 
@@ -6,7 +6,7 @@ function Home() {
     const {table} = useFetchStandings()
     return ( 
         <div id="home-ui">
-            <Games />
+            <UpcomingGames />
             <StandingsTable table={table} />
         </div>
     );
