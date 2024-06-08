@@ -21,3 +21,22 @@ nav[id='mobile-navbar']{
         color: white;
     }
 }
+
+nav[id='desktop-navbar']{
+    display: none;
+    @include b.up(md){
+        display: grid;
+        gap: 20px;
+        padding: 10px 16px 0;
+    }
+
+    a{
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        background-color: black;
+        padding: 10px 14px;
+        border-radius: 5px;
+    }
+}

@@ -3,8 +3,9 @@ import { useSearchParams } from "react-router-dom";
 import useFetch from "./useFetch";
 
 function useFetchStandings() {
-    const {data, fetchData} = useFetch()
 
+    const {data, fetchData, refreshPage} = useFetch()
+    
     // State to hold the fetched data
     const [table, setTable] = useState([]);
 
@@ -15,24 +16,25 @@ function useFetchStandings() {
     const [query, setQuery] = useState();
 
     // State to hold the URL based on the query
-    const [url, setUrl] = useState(
-        `https://api-nba-v1.p.rapidapi.com/standings?league=standard&season=${query}`
-    );
+    const [url, setUrl] = useState(``);
 
     // Effect to update the query state based on search parameters
     useEffect(() => {
         updateQueryState()
     }, [searchParams]);
     useEffect(() => {
-        console.log(query);
-        setUrl(`https://api-nba-v1.p.rapidapi.com/standings?league=standard&season=${query}`)
-    }, [query])
+        if (query) {
+            setUrl(`https://api-nba-v1.p.rapidapi.com/standings?league=standard&season=${query}`);
+        }}, [query])
     useEffect(() => {
-        fetchData(url)
+        if (url) {
+            fetchData(url)
+        }
     }, [url])
     useEffect(() => {
         createTable()
     }, [data])
+
 
 
     function updateQueryState(){
@@ -47,7 +49,6 @@ function useFetchStandings() {
             setQuery(currentSeason);
         } else if(searchQuery < lastSeasonFetchable){
             setQuery(lastSeasonFetchable);
-            // setSearchParams(lastSeasonFetchable)
         }
          else {
             setQuery(searchQuery);
@@ -67,7 +68,7 @@ function useFetchStandings() {
             // console.log(table);
         }
     }
-    return {table, setSearchParams, setQuery};
+    return {table, setSearchParams};
 }
 
 export default useFetchStandings;

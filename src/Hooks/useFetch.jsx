@@ -5,6 +5,7 @@ function useFetch() {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [refreshPage, setRefreshPage] = useState(false);
 
     const options = {
         method: 'get',
@@ -24,16 +25,16 @@ function useFetch() {
           }
           const res = await request.json()
           setData(res)
-          //   console.log(res);
         } catch(error){
           setError(error)
           console.error(error)
         } finally{
           setLoading(false)
+          setRefreshPage(false)
         }
-      }
+    }  
 
-    return {data, fetchData};
+  return {data, fetchData, refreshPage};
 }
 
 export default useFetch;
